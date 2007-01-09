@@ -11,7 +11,7 @@
 #define TABLE_NAME "range"
 #define TARGET_USER "_pfbwmond"
 #define MAX_ASTATS 500
-#define BUFSIZE 500
+#define BUFSIZE 8000
 #define PF_LOCATION "/dev/pf"
 
 typedef struct transmit {
@@ -21,8 +21,9 @@ typedef struct transmit {
 } transmit;
 
 #if BYTE_ORDER == BIG_ENDIAN
-  #define _htonq(x) x define _ntohq(x) x
+  #define _htonq(x) x
+  #define _ntohq(x) x
 #else
-  #define _htonq(x) ntohq(x) define _ntohq(x) 
-  #(((u_int64_t)htonl((x)>>32))|(((u_int64_t)htonl(x))<<32))
+  #define _htonq(x) ntohq(x)
+  #define _ntohq(x) (((u_int64_t)htonl((x)>>32))|(((u_int64_t)htonl(x))<<32))
 #endif
