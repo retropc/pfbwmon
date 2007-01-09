@@ -78,9 +78,10 @@ daemonise()
 
 blah = -1
 while 1:
-  data, addr = uso.recvfrom(1024)
+  data, addr = uso.recvfrom(8192)
   if data and addr[0] == fromaddr:
     items = ord(data[0])
+
     data = data[1:]
     
     hash = []
