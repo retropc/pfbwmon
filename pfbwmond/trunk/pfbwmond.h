@@ -24,6 +24,6 @@ typedef struct transmit {
   #define _htonq(x) x
   #define _ntohq(x) x
 #else
-  #define _htonq(x) ntohq(x)
+  #define _htonq(x) _ntohq(x)
   #define _ntohq(x) (((u_int64_t)htonl((x)>>32))|(((u_int64_t)htonl(x))<<32))
 #endif
