@@ -23,6 +23,8 @@ class handler(BaseHTTPRequestHandler):
 
       self.send_response(200)
       self.send_header('Content-type', l)
+      self.send_header("Cache-Control", "no-cache, must-revalidate")
+      self.send_header("Expires", "Mon, 26 Jul 1997 05:00:00 GMT")
       self.end_headers()
       self.wfile.write(f.read())
       f.close()
